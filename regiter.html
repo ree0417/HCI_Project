@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Register Page</title>
+  <link rel="stylesheet" href="Style.css">
+</head>
+<body>
+    <style>
+         body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #1e1e20, #b1b1b6);
+      margin: 0;
+      padding-top: 80px; /* Leave space for navbar */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    </style>
+
+     <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="nav-brand">
+  <a href="index.html">
+    <img src="Images/images.jpeg" alt="Logo" class="logo-img">
+  </a>
+</div>
+
+<ul class="nav-links">
+      <li><a href="index.html">Login</a></li>
+      <li><a href="regiter.html" style="background-color: #424245ec;
+      padding: 15px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);">Register</a></li>
+      <li><a href="home.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Login Container -->
+  <div class="register-container">
+    <h2>Register</h2>
+    <input type="text" id="Name" placeholder="Name"/>
+    <input type="Surname" id="Surname" placeholder="Surname"/>
+    <input type="Student number" id="Student number" placeholder="Student number"/>
+    <input type="Create New password" id="Create New Password" placeholder="Create New Password"/>
+    <input type="Confirm password" id="Confirm Password" placeholder="Confirm password"/>
+    <input type="Contact Number" id="Contact Number" placeholder="Contact Number"/>
+    <input type="Email" id="Email" placeholder="StudentNo@mywsu.ac.za"/>
+    <button onclick="register()">Register</button>
+    <div id="error" class="error"></div>
+  </div>
+
+  <script>
+    function register() {
+      const Name = document.getElementById("Name").value;
+      const Surname = document.getElementById("Surname").value;
+      const StudentNumber = document.getElementById("Student number").value;
+      const CreateNewPassword = document.getElementById("Create New Password").value;
+      const ConfirmPassword = document.getElementById("Confirm password").value;
+      const ContactNumber = document.getElementById("Contact Number").value;
+      const Email = document.getElementById("Email").value;
+      const errorDiv = document.getElementById("error");
+
+      if (ConfirmPassword != CreateNewPassword ) {
+        errorDiv.textContent = "Password does not match.";
+        errorDiv.className = "error";
+        return;
+      }
+
+      localStorage.setItem("registeredUsername", username);
+      localStorage.setItem("registeredPassword", password);
+
+      errorDiv.textContent = "Registration successful! You can now log in.";
+      errorDiv.className = "success";
+
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+    }
+  </script>
+  </body>
+</html>
